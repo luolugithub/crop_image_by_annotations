@@ -17,10 +17,8 @@ for filename in os.listdir("./Annotation"):
     print("filename: ", filename)
     print("basename: ", basename)
     try:
-        # file = open(os.path.join(Annotation, directory, basename))
         file = open("./Annotation/" + filename, "r")
         root = ET.fromstring(file.read())
-        # dom = parseString(file.read())
         object_sum = len(root.find('object'))
         tree = ET.parse('./Annotation/' + filename)
         file.close()
@@ -35,8 +33,6 @@ for filename in os.listdir("./Annotation"):
             img = Image.open("./images/" + basename + ".jpg")
             cropped = img.crop((xmin, ymin, xmax, ymax))
 
-            # save_file = open("./Cropped" + basename, 'w')
-            # cropped.save("./Cropped/" + basename + "_" + name_object + "_" + str(object) + ".jpg")
             cropped.save("./Cropped/" + name_object + "_" + basename + "_" + str(object) + ".jpg")
             # save_file.close()
         count = count + 1
